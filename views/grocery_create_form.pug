@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='' enctype='multipart/form-data')
+    div.form-group
+      label(for='brandname') Brandname:
+      input#brandname(class='input-text' type='text', name='brandname', value=(undefined===grocery ? '' : grocery.brandname), required='true')
+      label(for='product') Product:
+      input#product(class='input-text' type='text', name='product', value=(undefined===grocery ? '' : grocery.product), required='true')
+      label(for='price') Price:
+      input#price(class='input-text' type='number', name='price', step='.01', value=(undefined===grocery ? '' : grocery.price), required='true')
+      label(for='quantity') Quantity:
+      input#quantity(class='input-text' type='number', name='quantity', value=(undefined===grocery ? '' : grocery.quantity), required='true')
+      label(for='img') Image Url:
+      input#img(type='file', name='grocery-img', value=(undefined===grocery ? '' : grocery.img))
+    input(class='submit' type='submit')
+
+    if errors
+      ul
+        for error in errors
+          li!= error.msg

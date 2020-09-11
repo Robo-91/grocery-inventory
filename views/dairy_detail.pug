@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div.product-content
+    h1 #{dairy.brandname}
+    h2 ~ #{dairy.product} ~
+
+    if dairy.img && dairy.img.data
+      img(src=`data:image/${dairy.img.contentType};base64, ${dairy.img.data.toString('base64')}` width='500' height='500')
+    else
+      div No Image Available with this product.
+
+    h4 #{dairy.dairy_item_price}
+  
+  div(class="edit-item")
+    a(class="btn-custom" href=dairy.url+'/delete') Delete Dairy Product
+    a(class="btn-custom" href=dairy.url+'/update') Update Dairy Product
+

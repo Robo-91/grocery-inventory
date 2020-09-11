@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  div.product-content
+    h1 #{grocery.brandname} 
+    h2 ~ #{grocery.product} ~
+
+    if grocery.img && grocery.img.data
+      img(src=`data:image/${grocery.img.contentType};base64, ${grocery.img.data.toString('base64')}` width='500' height='500')
+    else
+      div No image available for this product.
+
+    h4 #{grocery.grocery_item_price}
+
+  div(class="edit-item")
+    a(class="btn-custom" href=grocery.url+'/delete') Delete Grocery Product
+    a(class="btn-custom" href=grocery.url+'/update') Update Grocery Product

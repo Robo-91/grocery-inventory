@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  div.product-content
+    h1 #{produce.name} 
+    h2 #{produce.type}
+
+    if produce.img && produce.img.data
+      img(src=`data:image/${produce.img.contentType};base64, ${produce.img.data.toString('base64')}` width="500" height="500")
+    else
+      div No Image available for this product.
+
+    h4 #{produce.produce_price}
+
+  div.edit-item
+    a(class="btn-custom" href=produce.url+'/delete') Delete Produce Product
+    a(class="btn-custom" href=produce.url+'/update') Update Produce Product

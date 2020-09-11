@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1=title
+  hr
+
+  ul(class='list-items')
+    each item in grocery_list
+      li(class='product')
+        if item.img && item.img.data
+          img(src=`data:image/${item.img.contentType};base64, ${item.img.data.toString('base64')}` width='120' height='150')
+        else
+          div No Image Available with this product.
+        p(class="item-price") #{item.price}
+        a(href=item.url) #{item.brandname} #{item.product}
+
+    else
+      li There are no Grocery Items.
+
+  a(class='create-item' href='/inventory/grocery/create') New Grocery Product

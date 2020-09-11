@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+
+  p.delete-message Are you sure you want to delete this product?
+
+  div.delete-item-info
+    p #[strong Brandname]: #{grocery.brandname}
+    p #[strong Product]: #{grocery.product}
+    p #[strong Price]: #{grocery.price}
+    p #[strong Quantity]: #{grocery.quantity}
+
+  form(method='POST' action='')
+    div.delete-form-group
+      input#id.form-control(type='hidden', name='id', required='true', value=grocery._id)
+    input(class='submit' type='submit')

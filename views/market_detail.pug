@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  div.product-content
+    h1 #{market.name}
+    h2 In Stock: #{market.quantity}
+
+    if market.img && market.img.data
+      img(src=`data:image/${market.img.contentType};base64, ${market.img.data.toString('base64')}` width="500" height="500")
+    else
+      div No image available for this product.
+
+    h4 #{market.market_price}
+
+  div(class="edit-item")
+    a(class="btn-custom" href=market.url+'/delete') Delete Market Product
+    a(class="btn-custom" href=market.url+'/update') Update Market Product

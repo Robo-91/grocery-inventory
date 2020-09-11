@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='' enctype='multipart/form-data')
+    div.form-group
+      label(for='name') Name:
+      input#name(class='input-text' type='text', name='name', value=(undefined===market ? '' : market.name), required='true')
+      label(for='price') Price:
+      input#price(class='input-text' type='text', name='price', step='.01', value=(undefined===market ? '' : market.price))
+      label(for='usda') USDA:
+      input#usda(class='input-text' type='text', name='usda', value=(undefined===market ? '' : market.usda), required='true')
+      label(for='quantity') Quantity:
+      input#quantity(class='input-text' type='number' name='quantity', value=(undefined===market ? '' : market.quantity))
+      label(for='img') Image Url:
+      input#img(type='file', name='img', value=(undefined===market ? '' : market.img))
+    input(class='submit' type='submit')
+
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
