@@ -209,6 +209,39 @@ header {
 	justify-content: space-around;
 }
 
+@media screen and (max-width: 1000px) {
+	.product-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;	
+	}
+	.product-content h1 {
+		margin-bottom: 1em;
+	}
+	.product-content h2 {
+		margin-bottom: 3em;
+	}
+	.product-content h4 {
+		margin-top: 3em;
+		align-self: center;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.product-content img {
+		width: 300px;
+		height: 300px;
+	}
+	.edit-item {
+		flex-direction: column;
+		align-items: center;
+		margin-top: 5em;
+	}
+	.edit-item .btn-custom {
+		margin-bottom: 2em;
+	}
+}
+
 /* Form Styles */
 
 .form-group {
